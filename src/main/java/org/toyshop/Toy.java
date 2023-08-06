@@ -56,9 +56,13 @@ public class Toy implements Comparable<Toy>{
         this.dropChance = dropChance;
     }
 
-    public Toy createToy() {
+    /**
+     *
+     * @return создает новый товар-игрушку
+     */
+    public Toy createToy(Goods goods) {
         Scanner sc = new Scanner(System.in);
-        id = this.id + 1;
+        id = goods.goods.size() + 1;
         System.out.print("Введите наименование товара: ");
         name = sc.nextLine();
         System.out.print("Введите количество товара: ");
@@ -66,6 +70,10 @@ public class Toy implements Comparable<Toy>{
         return new Toy(id, name, stock);
     }
 
+    /**
+     *
+     * @return собирает и переводит в String всю информацию по элементу класса для последующего вывод на экран
+     */
     public String getToyInfo() {
         Integer temp = dropChance;
         StringBuilder sb = new StringBuilder();

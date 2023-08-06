@@ -9,6 +9,10 @@ public class Draw{
         this.drawList = new PriorityQueue<>();
     }
 
+    /**
+     *
+     * @return возвращает список товаров, которые учествуют в розыгрыше
+     */
     public String getDrawList() {
         StringBuilder sb = new StringBuilder();
         for (Toy i : drawList) {
@@ -18,6 +22,10 @@ public class Draw{
         return sb.toString();
     }
 
+    /**
+     *
+     * @param goods список всех существующих товаров
+     */
     public void addToDrawList(Goods goods) {
         System.out.print("Введите id товара, который необходимо добавить в список разыгрываемых: ");
         int inputId = inputValue();
@@ -29,7 +37,7 @@ public class Draw{
             if (checkUnique(inputId)) {
                 for (Toy j : goods.goods) {
 
-                    if (inputId == j.getId()) {
+                    if (inputId == j.getId() & inputId != 0) {
                         System.out.print("Введите шанс выпадения (доля от 1 до 10): ");
                         int dropChance = inputValue();
                         j.setDropChance(dropChance);
@@ -49,11 +57,20 @@ public class Draw{
         }
     }
 
+    /**
+     *
+     * @return ввод данных
+     */
     private int inputValue() {
         Scanner sc = new Scanner(System.in);
         return Integer.parseInt(sc.nextLine());
     }
 
+    /**
+     *
+     * @param inputId ИД , который ввел пользователь
+     * @return проверяет, не пытаются ли добавить к розыгрышу товары, которые уже ранее добавили
+     */
     private boolean checkUnique(int inputId) {
         for (Toy i : drawList) {
             if (drawList.element().getId() == inputId) {
@@ -63,6 +80,10 @@ public class Draw{
         return true;
     }
 
+    /**
+     *
+     * @return возвращает игрушку, которая выиграла в розыгрыше
+     */
     public Toy getWinner() {
         ArrayList<Integer> rollArray = createRollArray();
         Toy winner = new Toy();
@@ -81,6 +102,11 @@ public class Draw{
         return winner;
     }
 
+    /**
+     *
+     * @return возвращает ArrayList, заполненный идентификаторами товаров в соответствии с указанным весом (
+     * для дальнейшего розыгрыша)
+     */
     private ArrayList<Integer> createRollArray() {
         ArrayList<Integer> rollArray = new ArrayList<>();
         for (Toy o : drawList) {

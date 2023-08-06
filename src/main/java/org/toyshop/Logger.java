@@ -16,16 +16,27 @@ public class Logger {
         this.fileHandler = new FileHandler();
     }
 
+    /**
+     *
+     * @param text текст, который нужно сохранить
+     */
     public void pushLog(String text) {
         sb.append(getDateTime()).append(" ").append(text).append("\n");
     }
 
+    /**
+     *
+     * @return возвращает дату и время в нужном формате
+     */
     private Date getDateTime() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         return date;
     }
 
+    /**
+     * сохранение данных в файл
+     */
     public void save() {
         fileHandler.save(sb.toString(), path, file);
     }

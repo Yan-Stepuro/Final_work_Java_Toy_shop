@@ -14,50 +14,18 @@ public class Goods {
         this(new ArrayList<>());
     }
 
+    /**
+     *
+     * @param toy игрушка, которую нужно добавить в список товаров (класс Toy)
+     */
     public void addToy(Toy toy) {
         goods.add(toy);
-
-//        System.out.println("Изначальный список _ " + getGoodsInfo());
-//        System.out.println("Список пустой? _ " + goods.isEmpty());
-
-//        if (goods.isEmpty()) {
-//            System.out.println("Добавляем первую запись" + toy.getToyInfo() + "\n");
-//            goods.add(toy);
-//        } else {
-//            for (Toy i : goods) {
-//                System.out.println("берем элемент _ " + i.getName());
-//                if (i.getName().equals(toy.getName())) {
-//                    flag = false;
-//                    System.out.println("сравниваем с _ " + toy.getName());
-//                    System.out.println("Результат сравнения _ " + !i.getName().equals(toy.getName()));
-//                    System.out.println("Добавляем _ " + toy.getToyInfo());
-//                    goods.add(toy);
-//                    System.out.println("Получаем _ " + getGoodsInfo());
-//                } else {
-//                    System.out.println("Товар с таким именем уже существует.");
-//                }
-//            }
-//
-//            boolean flag = true;
-//            while (flag) {
-//                for (Toy i : goods) {
-//                    System.out.println("берем элемент _ " + i.getName());
-//                    System.out.println("сравниваем с _ " + toy.getName());
-//                    System.out.println("Результат сравнения _ " + i.getName().equals(toy.getName()));
-//                    if (i.getName().equals(toy.getName())) {
-//                        flag = false;
-//                        System.out.println("Товар с таким именем уже существует.");
-//                    } else {
-//                        System.out.println("Добавляем _ " + toy.getToyInfo());
-//                        goods.add(toy);
-//                        System.out.println("Получаем _ " + getGoodsInfo());
-//                        flag = false;
-//                    }
-//                }
-//            }
-//        }
     }
 
+    /**
+     *
+     * @return возвращает весь список товаров
+     */
     public String getGoods() {
         StringBuilder sb = new StringBuilder();
         for (Toy i : goods) {
@@ -67,6 +35,11 @@ public class Goods {
         return sb.toString();
     }
 
+    /**
+     *
+     * @param id ИД товара, который нужно найти
+     * @return возвращает товар в соответствии с указанным ИД
+     */
     public Toy getToyById(int id) {
         Toy toy = new Toy();
         for (Toy i : goods) {
